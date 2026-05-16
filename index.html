@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ivan Leal | Técnico em Informática</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1160px;
+      margin: auto;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e9f2;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 1.35rem;
+      color: #0f172a;
+    }
+
+    .brand span {
+      display: block;
+      color: #64748b;
+      font-size: 0.95rem;
+      margin-top: 3px;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .menu a {
+      color: #475569;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .menu a:hover {
+      color: #0f766e;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #16a34a;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 14px 22px;
+      border-radius: 12px;
+      font-weight: 800;
+      transition: 0.25s;
+      border: none;
+    }
+
+    .btn:hover {
+      background: #15803d;
+      transform: translateY(-2px);
+    }
+
+    .btn.secondary {
+      background: #ffffff;
+      color: #0f766e;
+      border: 1px solid #b8d8d2;
+    }
+
+    .btn.secondary:hover {
+      background: #ecfdf5;
+    }
+
+    .hero {
+      padding: 80px 0 60px;
+      background: linear-gradient(135deg, #ffffff 0%, #eefaf7 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      background: #e6f8f2;
+      color: #0f766e;
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      line-height: 1.03;
+      color: #0f172a;
+      margin-bottom: 18px;
+      letter-spacing: -1.5px;
+    }
+
+    .hero h1 span {
+      color: #0f766e;
+    }
+
+    .hero p {
+      color: #475569;
+      font-size: 1.13rem;
+      line-height: 1.8;
+      max-width: 650px;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+
+    .quick-info {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 650px;
+    }
+
+    .quick-info div {
+      background: #ffffff;
+      border: 1px solid #e5e9f2;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 8px 25px rgba(15, 23, 42, 0.04);
+    }
+
+    .quick-info strong {
+      display: block;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+
+    .quick-info span {
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+
+    .hero-card {
+      background: #ffffff;
+      border: 1px solid #e5e9f2;
+      border-radius: 28px;
+      padding: 18px;
+      box-shadow: 0 24px 70px rgba(15, 23, 42, 0.10);
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 20px;
+      display: block;
+    }
+
+    .price-box {
+      margin-top: 16px;
+      background: #f8fafc;
+      border: 1px solid #e5e9f2;
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .price-box small {
+      color: #64748b;
+      font-weight: 700;
+    }
+
+    .price-box h3 {
+      margin: 8px 0;
+      font-size: 1.4rem;
+      color: #0f172a;
+    }
+
+    .price-box .price {
+      font-size: 2.2rem;
+      color: #16a34a;
+      font-weight: 900;
+    }
+
+    section {
+      padding: 78px 0;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 42px;
+    }
+
+    .section-head span {
+      color: #0f766e;
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: #0f172a;
+      margin: 10px 0 12px;
+    }
+
+    .section-head p {
+      color: #64748b;
+      line-height: 1.75;
+    }
+
+    .about-box {
+      background: #ffffff;
+      border: 1px solid #e5e9f2;
+      border-radius: 28px;
+      padding: 38px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 36px;
+      align-items: center;
+      box-shadow: 0 20px 55px rgba(15, 23, 42, 0.06);
+    }
+
+    .about-box img {
+      width: 100%;
+      height: 390px;
+      object-fit: cover;
+      border-radius: 22px;
+    }
+
+    .about-text h2 {
+      font-size: 2.4rem;
+      color: #0f172a;
+      margin-bottom: 18px;
+    }
+
+    .about-text p {
+      color: #475569;
+      line-height: 1.85;
+      margin-bottom: 18px;
+      font-size: 1.03rem;
+    }
+
+    .check-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .check-list li {
+      list-style: none;
+      background: #f8fafc;
+      border: 1px solid #e5e9f2;
+      padding: 14px 16px;
+      border-radius: 14px;
+      color: #334155;
+      font-weight: 600;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      background: #ffffff;
+      border: 1px solid #e5e9f2;
+      border-radius: 22px;
+      padding: 28px;
+      transition: 0.25s;
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.04);
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: #99d6c8;
+    }
+
+    .service-card .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: #e6f8f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 18px;
+    }
+
+    .service-card h3 {
+      color: #0f172a;
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: #64748b;
+      line-height: 1.7;
+    }
+
+    .reviews-box {
+      background: #0f172a;
+      color: #ffffff;
+      border-radius: 28px;
+      padding: 46px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .reviews-box h2 {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+
+    .reviews-box p {
+      color: rgba(255,255,255,0.72);
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    .review-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 22px;
+      padding: 24px;
+    }
+
+    .stars {
+      color: #facc15;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+
+    .pricing {
+      background: #ffffff;
+      border: 1px solid #e5e9f2;
+      border-radius: 28px;
+      padding: 36px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      align-items: center;
+      box-shadow: 0 20px 55px rgba(15, 23, 42, 0.06);
+    }
+
+    .pricing h2 {
+      font-size: 2.4rem;
+      color: #0f172a;
+      margin-bottom: 14px;
+    }
+
+    .pricing p {
+      color: #64748b;
+      line-height: 1.8;
+      margin-bottom: 22px;
+    }
+
+    .price-highlight {
+      background: #ecfdf5;
+      border: 1px solid #bbf7d0;
+      border-radius: 24px;
+      padding: 28px;
+      text-align: center;
+    }
+
+    .price-highlight span {
+      color: #166534;
+      font-weight: 900;
+    }
+
+    .price-highlight strong {
+      display: block;
+      font-size: 3.2rem;
+      color: #16a34a;
+      margin: 8px 0;
+    }
+
+    .contact-box {
+      text-align: center;
+      background: linear-gradient(135deg, #0f766e, #16a34a);
+      color: #ffffff;
+      border-radius: 30px;
+      padding: 60px 28px;
+    }
+
+    .contact-box h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 14px;
+    }
+
+    .contact-box p {
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto 28px;
+      line-height: 1.8;
+    }
+
+    .contact-box .btn {
+      background: #ffffff;
+      color: #166534;
+    }
+
+    footer {
+      background: #ffffff;
+      border-top: 1px solid #e5e9f2;
+      padding: 34px 0;
+      color: #64748b;
+      text-align: center;
+    }
+
+    footer strong {
+      color: #0f172a;
+    }
+
+    @media (max-width: 920px) {
+      .menu {
+        display: none;
+      }
+
+      .hero-grid,
+      .about-box,
+      .reviews-box,
+      .pricing {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-info,
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 50px;
+      }
+
+      .hero-card img,
+      .about-box img {
+        height: 280px;
+      }
+    }
+  
+
+    .floating-whatsapp {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 2000;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: #16a34a;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.7rem;
+      box-shadow: 0 12px 35px rgba(22, 163, 74, 0.45);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.45); }
+      70% { box-shadow: 0 0 0 16px rgba(22, 163, 74, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
+    }
+
+    .reveal {
+      animation: fadeUp 0.8s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .why-grid, .before-after-grid, .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .why-card, .before-after-card, .faq-card {
+      background: #ffffff;
+      border: 1px solid #e5e9f2;
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.04);
+      transition: 0.25s;
+    }
+
+    .why-card:hover, .before-after-card:hover, .faq-card:hover {
+      transform: translateY(-6px);
+      border-color: #99d6c8;
+    }
+
+    .why-card strong, .before-after-card strong, .faq-card strong {
+      display: block;
+      color: #0f172a;
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+    }
+
+    .why-card p, .before-after-card p, .faq-card p {
+      color: #64748b;
+      line-height: 1.7;
+    }
+
+    .map-contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .contact-info {
+      background: #ffffff;
+      border: 1px solid #e5e9f2;
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: 0 20px 55px rgba(15, 23, 42, 0.06);
+    }
+
+    .contact-info h2 {
+      font-size: 2.3rem;
+      color: #0f172a;
+      margin-bottom: 16px;
+    }
+
+    .contact-line {
+      padding: 15px 0;
+      border-bottom: 1px solid #e5e9f2;
+      color: #475569;
+      font-weight: 600;
+    }
+
+    .contact-line:last-child {
+      border-bottom: 0;
+    }
+
+    .map-box {
+      min-height: 360px;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid #e5e9f2;
+      background: #e2e8f0;
+    }
+
+    .map-box iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      min-height: 360px;
+    }
+
+    .gallery-grid img {
+      cursor: pointer;
+    }
+
+    .site-note {
+      margin-top: 14px;
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+
+    @media (max-width: 920px) {
+      .why-grid,
+      .before-after-grid,
+      .faq-grid,
+      .map-contact {
+        grid-template-columns: 1fr;
+      }
+
+      .floating-whatsapp {
+        width: 56px;
+        height: 56px;
+        right: 16px;
+        bottom: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand">
+          <strong>Ivan Leal</strong>
+          <span>Técnico em Informática</span>
+        </div>
+
+        <div class="menu">
+          <a href="#quem-sou">Quem sou</a>
+          <a href="#servicos">Serviços</a>
+          <a href="#avaliacoes">Avaliações</a>
+          <a href="#contato">Contato</a>
+        </div>
+
+        <a class="btn" href="https://wa.me/5561982386026" target="_blank">WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">Atendimento profissional desde 2016</div>
+
+          <h1>Manutenção e montagem de <span>computadores</span></h1>
+
+          <p>
+            Olá, sou o Ivan Leal. Trabalho com montagem, configuração e manutenção de computadores e videogames, oferecendo um atendimento direto, confiável e com orçamento sem compromisso.
+          </p>
+
+          <div class="hero-buttons">
+            <a class="btn" href="https://wa.me/5561982386026" target="_blank">Entre em contato via WhatsApp</a>
+            <a class="btn secondary" href="#avaliacoes">Ver avaliações de clientes</a>
+          </div>
+
+          <div class="quick-info">
+            <div>
+              <strong>Hardware</strong>
+              <span>Montagem e manutenção</span>
+            </div>
+            <div>
+              <strong>Videogames</strong>
+              <span>Limpeza e suporte</span>
+            </div>
+            <div>
+              <strong>Orçamento</strong>
+              <span>Sem compromisso</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <img src="img/ivan-principal.png" alt="Ivan Leal com computador">
+
+          <div class="price-box">
+            <small>Serviço em destaque</small>
+            <h3>Formatação + Office + Antivírus</h3>
+            <div class="price">R$ 100,00</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="quem-sou">
+      <div class="container about-box">
+        <img src="img/setup-ivan.png" alt="Setup Ivan Leal TI">
+
+        <div class="about-text">
+          <h2>Quem sou</h2>
+          <p>
+            Sou Ivan Leal, técnico em informática e especialista em hardware. Trabalho com montagem, configuração e manutenção de computadores e videogames desde 2016.
+          </p>
+          <p>
+            Já são centenas de clientes satisfeitos, sempre buscando entregar computadores com mais desempenho, qualidade e confiabilidade.
+          </p>
+
+          <ul class="check-list">
+            <li>✓ Montagem de computadores de alta qualidade</li>
+            <li>✓ Configuração e otimização de sistemas</li>
+            <li>✓ Manutenção preventiva e corretiva</li>
+            <li>✓ Atendimento direto pelo WhatsApp</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicos">
+      <div class="container">
+        <div class="section-head">
+          <span>Serviços</span>
+          <h2>Como posso ajudar</h2>
+          <p>Serviços organizados de forma clara, mantendo a proposta simples do site original, mas com aparência mais profissional.</p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="icon">💻</div>
+            <h3>Formatação</h3>
+            <p>Instalação do sistema, drivers, Office, antivírus e configuração básica para uso.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="icon">🛠️</div>
+            <h3>Manutenção</h3>
+            <p>Diagnóstico de problemas, correção de falhas, limpeza e melhoria do desempenho.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="icon">⚙️</div>
+            <h3>Montagem de PCs</h3>
+            <p>Montagem de computadores com foco em qualidade, desempenho e organização.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="icon">🚀</div>
+            <h3>Upgrades</h3>
+            <p>Troca de SSD, memória RAM, placa de vídeo, fonte e outros componentes.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="icon">🎮</div>
+            <h3>Videogames</h3>
+            <p>Suporte, limpeza e manutenção para consoles e equipamentos relacionados.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="icon">🔎</div>
+            <h3>Orçamento</h3>
+            <p>Entre em contato para explicar o problema e solicitar uma avaliação sem compromisso.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="porque" class="reveal">
+      <div class="container">
+        <div class="section-head">
+          <span>Diferenciais</span>
+          <h2>Por que escolher o Ivan Leal?</h2>
+          <p>Um atendimento direto, técnico e confiável para quem precisa resolver problemas no computador sem enrolação.</p>
+        </div>
+
+        <div class="why-grid">
+          <div class="why-card">
+            <strong>Experiência desde 2016</strong>
+            <p>Anos de prática com montagem, manutenção, configuração e suporte para computadores e videogames.</p>
+          </div>
+
+          <div class="why-card">
+            <strong>Especialista em hardware</strong>
+            <p>Diagnóstico mais preciso para problemas de desempenho, peças, travamentos e upgrades.</p>
+          </div>
+
+          <div class="why-card">
+            <strong>Atendimento pelo WhatsApp</strong>
+            <p>Contato rápido para explicar o problema, tirar dúvidas e solicitar orçamento sem compromisso.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="antes-depois" class="reveal">
+      <div class="container">
+        <div class="section-head">
+          <span>Resultados</span>
+          <h2>Antes e depois do serviço</h2>
+          <p>Uma seção ideal para mostrar limpezas, upgrades, montagens, organização interna e melhora de desempenho.</p>
+        </div>
+
+        <div class="before-after-grid">
+          <div class="before-after-card">
+            <strong>PC lento → PC otimizado</strong>
+            <p>Remoção de arquivos desnecessários, instalação correta de drivers e ajustes para melhorar o uso diário.</p>
+          </div>
+
+          <div class="before-after-card">
+            <strong>Superaquecimento → Temperatura controlada</strong>
+            <p>Limpeza interna, troca de pasta térmica e verificação do sistema de ventilação.</p>
+          </div>
+
+          <div class="before-after-card">
+            <strong>Setup simples → Máquina pronta para uso</strong>
+            <p>Montagem, organização de cabos, testes e configuração para entregar o computador funcionando corretamente.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="avaliacoes" class="reveal">
+      <div class="container reviews-box">
+        <div>
+          <h2>Veja as avaliações dos clientes</h2>
+          <p>
+            A confiança é uma das partes mais importantes na hora de escolher um técnico. Por isso, as recomendações e avaliações dos clientes ficam em destaque.
+          </p>
+          <a class="btn" href="#" target="_blank">Ver avaliações</a>
+        </div>
+
+        <div class="review-card">
+          <img src="img/avaliacoes-ivan.png" alt="Avaliações Ivan Leal" style="width:100%; border-radius:18px; margin-bottom:20px; border:1px solid rgba(255,255,255,0.1);">
+          <div class="stars">★★★★★</div>
+          <p>
+            “Atendimento profissional, serviço bem feito e computador entregue funcionando perfeitamente.”
+          </p>
+          <strong>Cliente satisfeito</strong>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container pricing">
+        <div>
+          <h2>Formatação completa</h2>
+          <p>
+            Uma oferta simples e direta, igual à essência do site original: formatação com Office e antivírus por um preço claro para facilitar a decisão do cliente.
+          </p>
+          <a class="btn" href="https://wa.me/5561982386026" target="_blank">Quero formatar meu computador</a>
+        </div>
+
+        <div class="price-highlight">
+          <span>Formatação + Office + Antivírus</span>
+          <strong>R$ 100,00</strong>
+          <p>Entre em contato para confirmar disponibilidade e detalhes do serviço.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="reveal">
+      <div class="container">
+        <div class="section-head">
+          <span>Dúvidas</span>
+          <h2>Perguntas frequentes</h2>
+          <p>Respostas rápidas para facilitar o contato do cliente.</p>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-card">
+            <strong>Faz orçamento sem compromisso?</strong>
+            <p>Sim. Entre em contato pelo WhatsApp e explique o problema do equipamento.</p>
+          </div>
+
+          <div class="faq-card">
+            <strong>Trabalha com PC gamer?</strong>
+            <p>Sim. O atendimento inclui montagem, upgrade, limpeza, configuração e diagnóstico.</p>
+          </div>
+
+          <div class="faq-card">
+            <strong>Atende videogames?</strong>
+            <p>Sim. Também realiza suporte, limpeza e manutenção em consoles.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <div class="container map-contact">
+        <div class="contact-info">
+          <h2>Informações de contato</h2>
+          <div class="contact-line">WhatsApp: (61) 98238-6026</div>
+          <div class="contact-line">Cidade: Luziânia - GO</div>
+          <div class="contact-line">Atendimento: orçamento sem compromisso</div>
+          <div class="contact-line">Serviços: computadores, notebooks e videogames</div>
+          <p class="site-note">Dica: aqui dá para colocar Instagram, endereço completo e link real do Google Maps.</p>
+        </div>
+
+        <div class="map-box">
+          <iframe loading="lazy" src="https://www.google.com/maps?q=Luzi%C3%A2nia%20GO&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="reveal">
+      <div class="container contact-box">
+        <h2>Entre em contato para fazer um orçamento</h2>
+        <p>
+          Explique o problema do seu computador ou videogame e receba um atendimento direto pelo WhatsApp.
+        </p>
+        <a class="btn" href="https://wa.me/5561982386026" target="_blank">Chamar Ivan Leal no WhatsApp</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>Ivan Leal</strong> • Técnico em Informática • (61) 98238-6026</p>
+      <p style="margin-top: 8px;">© 2026 Ivan Leal. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+
+  <a class="floating-whatsapp" href="https://wa.me/5561982386026" target="_blank" aria-label="Chamar no WhatsApp">☏</a>
+
+  <script>
+    const cards = document.querySelectorAll('.service-card, .why-card, .before-after-card, .faq-card, .about-box, .reviews-box, .pricing, .contact-box');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    cards.forEach(card => observer.observe(card));
+  </script>
+</body>
+</html>
